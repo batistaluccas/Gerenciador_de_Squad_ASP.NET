@@ -1,12 +1,33 @@
+using API.Services;
 using Common;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using Repository;
+using Repository.Context;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
 // Add services to the container.
+addScope(builder.Services);
+
+
+void addScope(IServiceCollection services)
+{
+    builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
+
+
+    builder.Services.AddDbContext<EFContext>(options =>
+        options.UseSqlServer(builder.Configuration["ConnectionStrings:DefaultConnection"],
+        b => b.MigrationsAssembly("API")));
+
+    builder.Services.AddScoped<IUserRepository, UserRepository>();
+
+    builder.Services.AddScoped<IUserService, UserService>();
+}
 
 builder.Services.AddControllers().ConfigureApiBehaviorOptions(x => { x.SuppressModelStateInvalidFilter = true; });
 
