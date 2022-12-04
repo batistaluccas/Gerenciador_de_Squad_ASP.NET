@@ -1,0 +1,26 @@
+﻿@{
+    Layout = null;
+    ViewData["Tittle"] = "Criar conta";
+}
+
+<link href="~/css/login.css" rel="stylesheet" />
+
+<section>
+    <h1>Crie sua conta de graça!</h1>
+    <form>
+        <input required id="username" placeholder="Username"/>
+        <input required type="email" id="email" placeholder="E-mail"/>
+        <input required type="password" id="password" placeholder="Senha"/>
+        <input required type="password" id="confirmPassword" placeholder="Confirmar Senha"/>
+        <div class="error">
+            <span hidden>Senhas diferentes</span>
+        </div>
+        <button>Criar</button>
+    </form>
+
+</section>
+
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/js/signup.js"></script>

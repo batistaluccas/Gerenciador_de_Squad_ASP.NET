@@ -34,5 +34,20 @@ namespace CursoASPNET.Controllers
 
             return View("Index", user);
         }
+
+        public IActionResult SignUp()
+        {
+            return View();  
+        }
+
+        public IActionResult Forgot()
+        {
+            return View();
+        }
+
+        public IActionResult Reset()
+        {
+            return View();
+        }
     }
 }
