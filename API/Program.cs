@@ -26,7 +26,11 @@ void addScope(IServiceCollection services)
 
     builder.Services.AddScoped<IUserRepository, UserRepository>();
 
+    builder.Services.AddScoped<IPersonRepository, PersonRepository>();
+
     builder.Services.AddScoped<IUserService, UserService>();
+
+    builder.Services.AddScoped<IPersonService, PersonService>();
 }
 
 builder.Services.AddControllers().ConfigureApiBehaviorOptions(x => { x.SuppressModelStateInvalidFilter = true; });

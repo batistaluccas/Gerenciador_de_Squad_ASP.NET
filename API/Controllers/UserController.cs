@@ -1,4 +1,5 @@
-﻿using API.Validator;
+﻿using API.Services;
+using API.Validator;
 using Common;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Http;
@@ -10,6 +11,12 @@ namespace API.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
+        private readonly IPersonService _personService;
+        public UserController(IPersonService personService)
+        {
+            _personService = personService;
+        }
+
         /// <summary>
         /// Autentica o Usuário
         /// </summary>
@@ -72,6 +79,17 @@ namespace API.Controllers
         public IActionResult Reset(UserModel user)
         {
             return Ok(new {response = "OK"});
+        }
+
+        [HttpGet("test")]
+        public IActionResult Test()
+        {
+            _personService.AddPerson(new PersonModel()
+            {
+                Email="alalal@alala.com",
+                Username="Caslu"
+            });
+            return Ok(new { response = "OK" });
         }
     }
 }
