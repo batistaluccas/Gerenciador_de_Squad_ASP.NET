@@ -7,14 +7,36 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/CursoASPNET.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"/>
 </head>
 <body>
     <header>
-       
+       <nav>
+           <div>
+                <i class="fa-solid fa-house"></i>
+                <a data-menu="home" href="/Home">Home</a>
+           </div>
+           <ul>
+               <li class="btn btn-active" data-menu="user">
+                    <a href="/User">Conta</a>
+               </li>
+               <li class="btn" data-menu="person">
+                    <a href="/Home">Pessoas</a>
+               </li>
+               <li class="btn" data-menu="squad">
+                    <a href="/Home">Squads</a>
+               </li>
+               <li class="btn" data-menu="task">
+                    <a href="/Home">Tarefas</a>
+               </li>
+           </ul>
+       </nav>
     </header>
+    <content>
+
     <div class="container">
         <main role="main" class="pb-3">
-            @RenderBody()
+                @RenderBody()
         </main>
     </div>
 
@@ -23,6 +45,7 @@
             &copy; 2022 - CursoASPNET
         </div>
     </footer>
+    </content>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

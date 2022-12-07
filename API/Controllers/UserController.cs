@@ -12,9 +12,12 @@ namespace API.Controllers
     public class UserController : ControllerBase
     {
         private readonly IPersonService _personService;
-        public UserController(IPersonService personService)
+
+        private readonly IUserService _userService;
+        public UserController(IPersonService personService, IUserService userService)
         {
             _personService = personService;
+            _userService = userService;         
         }
 
         /// <summary>
@@ -50,20 +53,49 @@ namespace API.Controllers
                 {
                     Console.WriteLine("Property " + failure.PropertyName + " failed validation. Error was: " + failure.ErrorMessage);
                 }
+
+                return Ok(new { response = "ERROR" });
             }
 
 
-            if (user.Password == "123")
-                return Ok(new { response = "OK" });
-            else
-                return Ok(new { response = "ERROR" });
+
+            var personId = _personService.AddPerson(new PersonModel()
+            {
+                Email = user.Person.Email,
+                Username = user.Person.Username,
+            });
+
+            _userService.AddUser(new UserModel()
+            {
+                PersonId = personId,
+                Password = user.Password,
+
+            });
+
+            return Ok(new { response = "OK" });                
         }
 
         /// <summary>
-        /// API para resetar senha
+        /// API para edição de usuário
         /// </summary>
-        /// <param name="email"></param>
-        /// <returns></returns>
+        /// <param name="user">modelo de usuário</param>
+        /// <returns>Ok se tudo certo</returns>
+        [HttpPatch("update")]
+
+        public IActionResult Update(UserModel user)
+        {
+            _userService.UpdateUser(user);
+
+            _personService.UpdatePerson(user.Person);
+
+            return Ok(new { response = "ERROR" });
+        }
+
+        /// <summary>
+            /// API para resetar senha
+            /// </summary>
+            /// <param name="email"></param>
+            /// <returns></returns>
         [HttpPost("forgot")]
         public IActionResult Forgot([FromBody] string email)
         {

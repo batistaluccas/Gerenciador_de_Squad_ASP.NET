@@ -13,7 +13,7 @@ namespace API.Services
             _personRepository = personRepository; 
         }
 
-        public void AddPerson(PersonModel model)
+        public int AddPerson(PersonModel model)
         {
             PersonEntity entity = new PersonEntity()
             {
@@ -21,7 +21,18 @@ namespace API.Services
                 Email = model.Email
             };
 
-            _personRepository.Add(entity);
+            return _personRepository.Add(entity);
+        }
+        public void UpdatePerson(PersonModel model)
+        {
+            PersonEntity entity = new PersonEntity()
+            {
+                Id = model.Id,
+                Username = model.Username,
+                Email = model.Email
+            };
+
+            _personRepository.Update(entity);
         }
     }
 }

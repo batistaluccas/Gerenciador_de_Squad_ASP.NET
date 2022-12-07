@@ -17,9 +17,17 @@ namespace Repository
                 _dataContext = dataContext;
             }
        
-            public void Add(PersonEntity entity)
+            public int Add(PersonEntity entity)
             {
                 _dataContext.Add(entity);
+                _dataContext.SaveChanges();
+
+                return entity.Id;
+            }
+
+            public void Update(PersonEntity entity)
+            {
+                _dataContext.Update(entity);
                 _dataContext.SaveChanges();
             }
 

@@ -1,10 +1,6 @@
 ﻿using Repository.Context;
 using Repository.Entity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Repository
 {
@@ -20,6 +16,11 @@ namespace Repository
         public void Add(UserEntity entity)
         {
             _dataContext.Add(entity);
+            _dataContext.SaveChanges();
+        }
+        public void Update(UserEntity entity)
+        {
+            _dataContext.Update(entity);
             _dataContext.SaveChanges();
         }
     }
