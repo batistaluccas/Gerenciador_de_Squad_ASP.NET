@@ -1,13 +1,16 @@
 ﻿$('form').on('submit', function (event) {
     event.preventDefault();
 
-    var formData =
-    {
+    var formData = {
+        "id": $("#UserId").val(),
         "password": $("#password").val(),
+        "ConfirmPassword": $("#confirmPassword").val(),
+        "personId": $("#PersonId").val(),
         "person": {
-            "email": $("#email").val(),
-            "username": $("#email").val()
-        }
+            "id": $("#PersonId").val(),
+            "username": $("#email").val(),
+            "email": $("#email").val()
+        }    
     }
 
     $.ajax({
@@ -20,13 +23,13 @@
             if (result.response == 'ERROR')
                 alert("credenciais inválidas")
             else {
-                let baseUrl = $('#btnLogin').data('url');
+                let baseUrl = $('#btnLogin').data('baseUrl');
                 window.location = baseUrl + "?" +
                     "UserId=" + result.userId +
                     "&PersonId=" + result.personId +
                     "&Username=" + result.username +
                     "&Email=" + result.email;
-            }              
+            }
         },
         error: function (error) {
             console.log(error);

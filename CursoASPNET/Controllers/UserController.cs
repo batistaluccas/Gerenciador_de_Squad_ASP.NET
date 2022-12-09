@@ -1,12 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Common;
+using CursoASPNET.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace CursoASPNET.Controllers
 {
     public class UserController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Edit(UserViewModel model)
         {
-            return View();
+            return View(model ?? new UserViewModel());
         }
     }
 }
