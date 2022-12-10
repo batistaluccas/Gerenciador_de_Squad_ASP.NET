@@ -1,4 +1,5 @@
-﻿using Repository.Context;
+﻿using Microsoft.EntityFrameworkCore;
+using Repository.Context;
 using Repository.Entity;
 using System;
 using System.Collections.Generic;
@@ -31,5 +32,17 @@ namespace Repository
                 _dataContext.SaveChanges();
             }
 
+            public PersonEntity Get(int id)
+            {
+                return _dataContext.Persons.FirstOrDefault(o =>
+                   o.Id == id);
+            }
+
+            public void Delete(int id)
+            {
+                var entity = Get(id);
+                _dataContext.Persons.Remove(entity);
+                _dataContext.SaveChanges();
+        }
     }
 }
