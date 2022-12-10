@@ -24,6 +24,8 @@ void addScope(IServiceCollection services)
         options.UseSqlServer(builder.Configuration["ConnectionStrings:DefaultConnection"],
         b => b.MigrationsAssembly("API")));
 
+   
+
     builder.Services.AddScoped<IUserRepository, UserRepository>();
 
     builder.Services.AddScoped<IPersonRepository, PersonRepository>();
@@ -31,6 +33,9 @@ void addScope(IServiceCollection services)
     builder.Services.AddScoped<IUserService, UserService>();
 
     builder.Services.AddScoped<IPersonService, PersonService>();
+
+
+
 }
 
 builder.Services.AddControllers().ConfigureApiBehaviorOptions(x => { x.SuppressModelStateInvalidFilter = true; });
@@ -43,6 +48,7 @@ builder.Services.AddCors(options =>
                         .AllowAnyMethod()
                         .AllowAnyHeader()
                         .AllowAnyOrigin();
+                       
 
                     }));
 

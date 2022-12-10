@@ -8,28 +8,21 @@
         "personId": $("#PersonId").val(),
         "person": {
             "id": $("#PersonId").val(),
-            "username": $("#email").val(),
+            "username": $("#username").val(),
             "email": $("#email").val()
         }    
     }
 
     $.ajax({
-        type: "POST",
+        type: "PATCH",
         dataType: "json",
         contentType: "application/json; charset=UTF-8",
         data: JSON.stringify(formData),
-        url: "https://localhost:44394/api/user",
+        url: "https://localhost:44394/api/user/update",
         success: function (result) {
-            if (result.response == 'ERROR')
-                alert("credenciais inválidas")
-            else {
-                let baseUrl = $('#btnLogin').data('baseUrl');
-                window.location = baseUrl + "?" +
-                    "UserId=" + result.userId +
-                    "&PersonId=" + result.personId +
-                    "&Username=" + result.username +
-                    "&Email=" + result.email;
-            }
+            if (result.response == 'OK')
+                alert("Salvo so sucesso")
+           
         },
         error: function (error) {
             console.log(error);

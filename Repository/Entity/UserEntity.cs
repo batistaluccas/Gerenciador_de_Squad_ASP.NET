@@ -22,6 +22,6 @@ namespace Repository.Entity
      
         public int PersonId { get; set; }
 
-        public PersonEntity Person { get; set; }
+        public PersonEntity? Person { get; set; }
     }
 }

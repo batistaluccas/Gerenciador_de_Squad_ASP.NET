@@ -11,6 +11,7 @@ namespace Repository.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+          
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

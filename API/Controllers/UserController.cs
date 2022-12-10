@@ -100,7 +100,7 @@ namespace API.Controllers
 
             _personService.UpdatePerson(user.Person);
 
-            return Ok(new { response = "ERROR" });
+            return Ok(new { response = "OK" });
         }
 
         /// <summary>

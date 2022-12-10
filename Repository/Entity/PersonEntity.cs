@@ -14,6 +14,6 @@ namespace Repository.Entity
 
         public string? Email { get; set; }
 
-        public UserEntity User { get; set; }
+        public UserEntity? User { get; set; }
     }
 }
