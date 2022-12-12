@@ -4,9 +4,9 @@
     var formData =
     {
         "password": $("#password").val(),
+        "username": $("#email").val(),
         "person": {
-            "email": $("#email").val(),
-            "username": $("#email").val()
+            "email": $("#email").val()
         }
     }
 

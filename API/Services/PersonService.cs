@@ -18,7 +18,8 @@ namespace API.Services
             PersonEntity entity = new PersonEntity()
             {
                 Name = model.Name,
-                Email = model.Email
+                Email = model.Email,
+                Type = model.Type
             };
 
             return _personRepository.Add(entity);
@@ -29,7 +30,8 @@ namespace API.Services
             {
                 Id = model.Id,
                 Name = model.Name,
-                Email = model.Email
+                Email = model.Email,
+                Type = model.Type
             };
 
             _personRepository.Update(entity);
@@ -42,7 +44,8 @@ namespace API.Services
             {
                 Id = entity.Id,
                 Name = entity.Name,
-                Email = entity.Email
+                Email = entity.Email,
+                Type = entity.Type
             };
         }
 

@@ -11,8 +11,6 @@ namespace Common
 
         public string? ConfirmPassword { get; set; }
 
-        public string? Type { get; set; }
-
         public string? ResetHash { get; set; }
 
         public int PersonId { get; set; }

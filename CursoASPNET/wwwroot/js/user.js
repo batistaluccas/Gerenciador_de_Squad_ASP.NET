@@ -3,12 +3,13 @@
 
     var formData = {
         "id": $("#UserId").val(),
+        "username": $("#username").val(),
         "password": $("#password").val(),
         "ConfirmPassword": $("#confirmPassword").val(),
         "personId": $("#PersonId").val(),
         "person": {
             "id": $("#PersonId").val(),
-            "username": $("#username").val(),
+            "name": $("#name").val(),
             "email": $("#email").val()
         }    
     }
